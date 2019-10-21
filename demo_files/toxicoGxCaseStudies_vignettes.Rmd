@@ -22,13 +22,13 @@ Our first case study is based on a plot from a paper by Rangel-Escareño et al.,
 For plotting the gene expression under same conditions using the package, the first step is to load the datasets from disk or download them using the downloadTSet function above. In the following example, we use the toy dataset provided with the package to illustrate the process. 
 To plot, the function drugGeneResponseCurve has been used wherein mandatory inputs such as dataset, drug name, cell-line, molecular type, gene name, dose and time points should be specified.
 
-```{r, message = FALSE}
+```{r, result = 'hide', message = FALSE}
 require(devtools)
-devtools::install_github("bhklab/ToxicoGx")
+devtools::install_github("bhklab/ToxicoGx", ref = "CRAN_submission")
 ```
 
 **Plot time dependent dose response of Carbon tetra chloride on CYP1A1 gene.**
-```{r, message - FALSE, fig.width = 7, fig.height = 7}
+```{r, message = FALSE, fig.width = 7, fig.height = 5}
 library(ToxicoGx)
 # Load the tset 
 TGGATESsmall <- readRDS("TGGATESsmall.rds")
@@ -53,7 +53,7 @@ For the second case study, we will recreate an analysis from the paper by Jos Kl
 by linking in vivo human hepatocarcinoma (HCC) signature geneset with in vitro TG-GATEs primary human hepatocyte data. In this example, we are using the toy dataset. The full dataset has to be downloaded to carry out the whole analysis done in the paper.
 The HCC signature, already mapped to the gene level, has been included in this package and it can be loaded by calling data(HCC_sig). Once the dataset is loaded, recreate drug signatures for each drug using the function drugPerturbationSig to perform statistical modelling of the transcriptomic response to the application of each drug. We then compare the observed up-regulated and down-regulated genes to HCC signature published in the paper. The output will be the GSEA connectivity score with FDR values that can be used to determine the correlation between the two signatures.
 
-```{r, results = 'asis'}
+```{r, message = FALSE, results = 'asis'}
 require(xtable)
 library(PharmacoGx)
 
